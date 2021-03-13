@@ -1,6 +1,7 @@
 import React, { useContext, useEffect } from 'react'
 import { CurrencyApiContext } from '../contexts'
 import { CurrencyApi } from '../services';
+import { AppState } from '../store/models';
 
 const CurrencyRate = () => {
 
@@ -9,6 +10,10 @@ const CurrencyRate = () => {
       CurrencyRate
     </div>
   )
+}
+
+const mapStateToProps = (state: AppState) => {
+
 }
 
 export default CurrencyRate

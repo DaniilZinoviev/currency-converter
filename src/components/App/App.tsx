@@ -8,7 +8,7 @@ import {
   Redirect,
 } from "react-router-dom";
 import { Home, CurrencyRate } from "../../pages";
-import { AppStore, ActionCreator } from "../../store/models";
+import { AppState, ActionCreator } from "../../store/models";
 import { updateRates } from "../../store/actions";
 import { Header } from "..";
 import CssBaseline from "@material-ui/core/CssBaseline";
@@ -51,10 +51,10 @@ const App = ({ updateRates }: { updateRates: ActionCreator }) => {
   );
 };
 
-const mapStateToProps = (store: AppStore) => {
+const mapStateToProps = (state: AppState) => {
   return {
-    baseCurrency: store.baseCurrency,
-    rates: store.rates,
+    baseCurrency: state.baseCurrency,
+    rates: state.rates,
   };
 };
 

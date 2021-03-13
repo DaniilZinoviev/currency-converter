@@ -1,21 +1,20 @@
-import { Rate } from '../../services/CurrencyApi/models';
-import { AppStore, Action } from '../models'
+import { AppState, Action } from '../models'
 
-const initialStore: AppStore = {
+const initialState: AppState = {
   baseCurrency: 'USD',
   rates: {}
 }
 
 
-const reducer = (store: AppStore = initialStore, action: Action) => {
+const reducer = (state: AppState = initialState, action: Action) => {
   switch (action.type) {
     case 'UPDATE_RATES':
       return {
-        ...store,
+        ...state,
         rates: action.payload
       }
     default:
-      return store;
+      return state;
   }
 }
 

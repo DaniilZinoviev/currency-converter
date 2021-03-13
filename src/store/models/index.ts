@@ -1,6 +1,6 @@
 import { Rate } from "../../services/CurrencyApi/models";
 
-interface AppStore {
+interface AppState {
   baseCurrency: string,
   rates: Rate
 }
@@ -15,7 +15,7 @@ interface ActionCreator {
 }
 
 export type {
-  AppStore,
+  AppState,
   ActionCreator,
   Action
 }

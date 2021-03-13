@@ -6,7 +6,7 @@ import FormHelperText from "@material-ui/core/FormHelperText";
 import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
 import { CurrencyApiContext } from "../contexts";
-import { AppStore } from "../store/models";
+import { AppState } from "../store/models";
 import { connect } from "react-redux";
 import { Rate } from "../services/CurrencyApi/models";
 import Typography from '@material-ui/core/Typography';
@@ -110,7 +110,7 @@ const Home = ({ rates }: { rates: Rate }) => {
   );
 };
 
-const mapStateToProps = (state: AppStore) => {
+const mapStateToProps = (state: AppState) => {
   return {
     rates: state.rates
   }
