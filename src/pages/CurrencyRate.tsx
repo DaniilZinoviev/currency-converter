@@ -35,7 +35,7 @@ const CurrencyRate = ({ rates, baseCurrency }: CurrencyRateProps) => {
             text = `1 ${key} = ${(1 / val).toFixed(2)} ${baseCurrency}`;
           }
           return (
-            <Grid item xs={12} md={12}>
+            <Grid item xs={12} md={12} key={key}>
               <ListItem key={key}>
                 <ListItemText>{text}</ListItemText>
               </ListItem>

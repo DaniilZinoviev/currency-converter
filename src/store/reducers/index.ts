@@ -8,6 +8,11 @@ const initialState: AppState = {
 
 const reducer = (state: AppState = initialState, action: Action) => {
   switch (action.type) {
+    case 'UPDATE_BASE_CURRENCY':
+      return {
+        ...state,
+        baseCurrency: action.payload
+      }
     case 'UPDATE_RATES':
       return {
         ...state,

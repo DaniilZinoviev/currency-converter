@@ -8,6 +8,14 @@ const updateRates = (payload: Rate): Action => {
   }
 }
 
+const updateBaseCurrency = (payload: string): Action => {
+  return {
+    type: 'UPDATE_BASE_CURRENCY',
+    payload
+  }
+}
+
 export {
-  updateRates
+  updateRates,
+  updateBaseCurrency
 }
