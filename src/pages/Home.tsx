@@ -12,6 +12,7 @@ import { Rate } from "../services/CurrencyApi/models";
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 import { makeStyles } from '@material-ui/core/styles';
+import { currencies } from "../mock";
 
 const useStyles = makeStyles((theme) => ({
   text: {
@@ -34,7 +35,6 @@ const Home = ({ rates }: { rates: Rate }) => {
   const result = apiService.convert(rates, fromCurrency, toCurrency, quantity);
 
   console.log(`Result is ${result}`, fromCurrency, toCurrency, quantity, typeof quantity);
-  var currenciesList = ["RUB", "EUR", "USD"];
 
   const handleFromCurrencyChange = (e: React.ChangeEvent<{ value: unknown }>) => {
     setFromCurrency(e.target.value as string);
@@ -62,7 +62,7 @@ const Home = ({ rates }: { rates: Rate }) => {
             value={fromCurrency}
             onChange={handleFromCurrencyChange}
           >
-            {currenciesList.map((value, i) => (
+            {currencies.map((value, i) => (
               <MenuItem key={value} value={value}>{value}</MenuItem>
             ))}
           </Select>
@@ -87,7 +87,7 @@ const Home = ({ rates }: { rates: Rate }) => {
             value={toCurrency}
             onChange={handleToCurrencyChange}
           >
-            {currenciesList.map((value) => (
+            {currencies.map((value) => (
               <MenuItem key={value} value={value}>{value}</MenuItem>
             ))}
           </Select>

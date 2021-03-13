@@ -39,8 +39,8 @@ class CurrencyApi {
       value = (rates[to] / rates[from]) * qty;
     }
 
-    // Round to two decimal places
-    return Number(value.toFixed(2));
+    // Round the value
+    return Number(value.toFixed(8));
   }
 
 }

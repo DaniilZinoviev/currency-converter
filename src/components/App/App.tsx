@@ -14,8 +14,11 @@ import { Header } from "..";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import { CurrencyApiContext } from "../../contexts";
 
+interface AppProps {
+  updateRates: ActionCreator;
+}
 
-const App = ({ updateRates }: { updateRates: ActionCreator }) => {
+const App = ({ updateRates }: AppProps) => {
   const apiService = useContext(CurrencyApiContext)
 
   useEffect(() => {
