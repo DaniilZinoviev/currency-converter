@@ -1,21 +1,17 @@
 import { Rate } from "../../services/CurrencyApi/models";
 
 interface AppState {
-  baseCurrency: string,
-  rates: Rate
+  baseCurrency: string;
+  rates: Rate;
 }
 
 interface Action {
-  type: string,
-  payload?: any
+  type: string;
+  payload?: any;
 }
 
 interface ActionCreator {
-  (payload: any): Action
+  (payload: any): Action;
 }
 
-export type {
-  AppState,
-  ActionCreator,
-  Action
-}
+export type { AppState, ActionCreator, Action };

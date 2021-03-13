@@ -1,5 +1,3 @@
 import CurrencyApi from "./CurrencyApi";
 
-export { 
-  CurrencyApi
-};
+export { CurrencyApi };

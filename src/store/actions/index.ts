@@ -3,19 +3,16 @@ import { Action } from "../models";
 
 const updateRates = (payload: Rate): Action => {
   return {
-    type: 'UPDATE_RATES',
-    payload
-  }
-}
+    type: "UPDATE_RATES",
+    payload,
+  };
+};
 
 const updateBaseCurrency = (payload: string): Action => {
   return {
-    type: 'UPDATE_BASE_CURRENCY',
-    payload
-  }
-}
+    type: "UPDATE_BASE_CURRENCY",
+    payload,
+  };
+};
 
-export {
-  updateRates,
-  updateBaseCurrency
-}
+export { updateRates, updateBaseCurrency };

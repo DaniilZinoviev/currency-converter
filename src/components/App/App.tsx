@@ -4,7 +4,6 @@ import {
   BrowserRouter as Router,
   Route,
   Switch,
-  Link as RouterLink,
   Redirect,
 } from "react-router-dom";
 import { Home, CurrencyRate } from "../../pages";
@@ -19,38 +18,43 @@ interface AppProps {
 }
 
 const App = ({ updateRates }: AppProps) => {
-  const apiService = useContext(CurrencyApiContext)
+  const apiService = useContext(CurrencyApiContext);
 
   useEffect(() => {
+    /**
+     * Get currency rates.
+     * These rates will later be used on calculation and in the currency rates list
+     */
     apiService
       .getCurrencyRates()
       .then((result) => {
         updateRates(result.rates);
-        console.log(`Rates was udpated. New rates are`, result.rates)
+        console.log(`Rates was udpated. New rates are`, result.rates);
       })
       .catch((e) => {
+        /**
+         * @todo A modal with error message
+         */
         console.error(e.message);
       });
   }, [apiService]);
 
   return (
-      <Router>
-        <CssBaseline>
+    <Router>
+      <CssBaseline>
+        <Header />
 
-          <Header />
-
-          <Switch>
-            <Route path="/currency-rate">
-              <CurrencyRate />
-            </Route>
-            <Route path="/" exact>
-              <Home />
-            </Route>
-            <Redirect to="/" />
-          </Switch>
-
-        </CssBaseline>
-      </Router>
+        <Switch>
+          <Route path="/currency-rate">
+            <CurrencyRate />
+          </Route>
+          <Route path="/" exact>
+            <Home />
+          </Route>
+          <Redirect to="/" />
+        </Switch>
+      </CssBaseline>
+    </Router>
   );
 };
 

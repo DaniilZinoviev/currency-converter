@@ -1,5 +1,3 @@
-import CurrencyApiContext from './CurrencyApi';
+import CurrencyApiContext from "./CurrencyApi";
 
-export {
-  CurrencyApiContext
-}
+export { CurrencyApiContext };

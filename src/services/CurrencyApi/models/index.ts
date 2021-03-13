@@ -8,7 +8,4 @@ interface RatesResponse {
   rates: Rate;
 }
 
-export type {
-  RatesResponse,
-  Rate
-}
+export type { RatesResponse, Rate };

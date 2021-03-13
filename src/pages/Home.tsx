@@ -1,17 +1,15 @@
 import React, { useState, useContext } from "react";
 import TextField from "@material-ui/core/TextField";
-import InputLabel from "@material-ui/core/InputLabel";
 import MenuItem from "@material-ui/core/MenuItem";
-import FormHelperText from "@material-ui/core/FormHelperText";
 import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
 import { CurrencyApiContext } from "../contexts";
 import { AppState } from "../store/models";
 import { connect } from "react-redux";
 import { Rate } from "../services/CurrencyApi/models";
-import Typography from '@material-ui/core/Typography';
-import Box from '@material-ui/core/Box';
-import { makeStyles } from '@material-ui/core/styles';
+import Typography from "@material-ui/core/Typography";
+import Box from "@material-ui/core/Box";
+import { makeStyles } from "@material-ui/core/styles";
 import { currencies } from "../mock";
 
 const useStyles = makeStyles((theme) => ({
@@ -26,24 +24,22 @@ const useStyles = makeStyles((theme) => ({
 const Home = ({ rates }: { rates: Rate }) => {
   const classes = useStyles();
 
-  const apiService = useContext(CurrencyApiContext)
-  const [fromCurrency, setFromCurrency] = useState('EUR');
-  const [toCurrency, setToCurrency] = useState('EUR');
+  const apiService = useContext(CurrencyApiContext);
+  const [fromCurrency, setFromCurrency] = useState("EUR");
+  const [toCurrency, setToCurrency] = useState("EUR");
   const [quantity, setQuantity] = useState(0);
 
-  //rates: Rate, from: string, to: string, qty: numbe
   const result = apiService.convert(rates, fromCurrency, toCurrency, quantity);
 
-  console.log(`Result is ${result}`, fromCurrency, toCurrency, quantity, typeof quantity);
-
-  const handleFromCurrencyChange = (e: React.ChangeEvent<{ value: unknown }>) => {
+  const handleFromCurrencyChange = (
+    e: React.ChangeEvent<{ value: unknown }>
+  ) => {
     setFromCurrency(e.target.value as string);
-  }
+  };
 
   const handleToCurrencyChange = (e: React.ChangeEvent<{ value: unknown }>) => {
     setToCurrency(e.target.value as string);
-  }
-
+  };
 
   /**
    * @todo
@@ -63,7 +59,9 @@ const Home = ({ rates }: { rates: Rate }) => {
             onChange={handleFromCurrencyChange}
           >
             {currencies.map((value, i) => (
-              <MenuItem key={value} value={value}>{value}</MenuItem>
+              <MenuItem key={value} value={value}>
+                {value}
+              </MenuItem>
             ))}
           </Select>
         </FormControl>
@@ -72,7 +70,7 @@ const Home = ({ rates }: { rates: Rate }) => {
           label="Quantity"
           type="number"
           value={quantity.toString()}
-          onChange={e => setQuantity(+e.target.value)}
+          onChange={(e) => setQuantity(+e.target.value)}
           InputLabelProps={{
             shrink: true,
           }}
@@ -88,7 +86,9 @@ const Home = ({ rates }: { rates: Rate }) => {
             onChange={handleToCurrencyChange}
           >
             {currencies.map((value) => (
-              <MenuItem key={value} value={value}>{value}</MenuItem>
+              <MenuItem key={value} value={value}>
+                {value}
+              </MenuItem>
             ))}
           </Select>
         </FormControl>
@@ -112,8 +112,8 @@ const Home = ({ rates }: { rates: Rate }) => {
 
 const mapStateToProps = (state: AppState) => {
   return {
-    rates: state.rates
-  }
-}
+    rates: state.rates,
+  };
+};
 
 export default connect(mapStateToProps)(Home);

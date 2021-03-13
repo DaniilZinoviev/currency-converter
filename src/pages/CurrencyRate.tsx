@@ -1,14 +1,13 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext } from "react";
 import { connect } from "react-redux";
 import { CurrencyApiContext } from "../contexts";
 import { currencies } from "../mock";
-import { CurrencyApi } from "../services";
 import { Rate } from "../services/CurrencyApi/models";
 import { AppState } from "../store/models";
 import List from "@material-ui/core/List";
-import ListItem, { ListItemProps } from "@material-ui/core/ListItem";
+import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
-import Grid, { GridSpacing } from "@material-ui/core/Grid";
+import Grid from "@material-ui/core/Grid";
 
 interface CurrencyRateProps {
   rates: Rate;
@@ -16,13 +15,18 @@ interface CurrencyRateProps {
 }
 
 const CurrencyRate = ({ rates, baseCurrency }: CurrencyRateProps) => {
-  const apiService = useContext(CurrencyApiContext)
+  const apiService = useContext(CurrencyApiContext);
 
   const relatedRates: Rate = {};
   currencies
-    .filter(currency => currency !== baseCurrency)
-    .forEach(currency => {
-      relatedRates[currency] = apiService.convert(rates, baseCurrency, currency, 1)
+    .filter((currency) => currency !== baseCurrency)
+    .forEach((currency) => {
+      relatedRates[currency] = apiService.convert(
+        rates,
+        baseCurrency,
+        currency,
+        1
+      );
     });
 
   return (

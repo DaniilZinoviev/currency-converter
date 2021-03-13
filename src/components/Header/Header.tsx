@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
-import Button from "@material-ui/core/Button";
 import Link from "@material-ui/core/Link";
 import { Link as RouterLink } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
@@ -14,7 +13,7 @@ import { ActionCreator, AppState } from "../../store/models";
 import { currencies } from "../../mock";
 import MenuItem from "@material-ui/core/MenuItem";
 import SettingsIcon from "@material-ui/icons/Settings";
-import CloseIcon from '@material-ui/icons/Close';
+import CloseIcon from "@material-ui/icons/Close";
 import Fab from "@material-ui/core/Fab";
 import Paper from "@material-ui/core/Paper";
 import { FormHelperText, InputLabel } from "@material-ui/core";
@@ -41,7 +40,7 @@ const useStyles = makeStyles((theme) => ({
     height: "100%",
   },
   modal: {
-    position: 'relative',
+    position: "relative",
     width: 600,
     maxWidth: "100%",
     margin: theme.spacing(2),
@@ -49,14 +48,14 @@ const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(2, 4, 3),
   },
   modalTitle: {
-    textAlign: 'center',
+    textAlign: "center",
     margin: theme.spacing(1, 1, 4),
   },
   modalClose: {
-    position: 'absolute',
-    right: '1rem',
-    top: '1rem'
-  }
+    position: "absolute",
+    right: "1rem",
+    top: "1rem",
+  },
 }));
 
 interface HeaderProps {
@@ -70,17 +69,16 @@ const Header = ({ baseCurrency, updateBaseCurrency }: HeaderProps) => {
 
   const routes = [
     {
-      path: '/',
-      label: 'Home'
+      path: "/",
+      label: "Home",
     },
     {
-      path: '/currency-rate',
-      label: 'Currency Rate'
+      path: "/currency-rate",
+      label: "Currency Rate",
     },
   ];
 
   const changeBaseCurrency = (e: React.ChangeEvent<{ value: unknown }>) => {
-    console.log(`changeBaseCurrency to ${e.target.value}`);
     updateBaseCurrency(e.target.value as string);
   };
 
@@ -88,13 +86,13 @@ const Header = ({ baseCurrency, updateBaseCurrency }: HeaderProps) => {
     <div className={classes.modalWrap}>
       <Paper className={classes.modal}>
         <div>
-          <Typography variant="h5" className={classes.modalTitle}>Settings</Typography>
+          <Typography variant="h5" className={classes.modalTitle}>
+            Settings
+          </Typography>
         </div>
 
         <FormControl variant="outlined">
-          <InputLabel id="settings-baseCurrency">
-            Base Currency
-          </InputLabel>
+          <InputLabel id="settings-baseCurrency">Base Currency</InputLabel>
           <Select
             labelId="settings-baseCurrency"
             id="from-currency"
@@ -109,11 +107,11 @@ const Header = ({ baseCurrency, updateBaseCurrency }: HeaderProps) => {
             ))}
           </Select>
           <FormHelperText>
-            Here you can choose a base currency. This will update currency rates based on new base currency
+            Here you can choose a base currency. This will update currency rates
+            based on new base currency
           </FormHelperText>
         </FormControl>
 
-        
         <Fab
           size="medium"
           color="secondary"

@@ -1,4 +1,4 @@
-import { RatesResponse, Rate } from './models'
+import { RatesResponse, Rate } from "./models";
 
 /**
  * There is a class to handle API requests to external service.
@@ -16,14 +16,14 @@ class CurrencyApi {
    * @returns Promise with rates in object shape
    */
   public getCurrencyRates(): Promise<RatesResponse> {
-    return fetch(
-      `${this.apiBase}/latest?access_key=${this.apiKey}`
-    ).then((response) => response.json()).then(result => {
-      if ( ! result.success ) {
-        throw new Error(result);
-      }
-      return result;
-    });
+    return fetch(`${this.apiBase}/latest?access_key=${this.apiKey}`)
+      .then((response) => response.json())
+      .then((result) => {
+        if (!result.success) {
+          throw new Error(result);
+        }
+        return result;
+      });
   }
 
   public convert(rates: Rate, from: string, to: string, qty: number): number {
@@ -31,9 +31,9 @@ class CurrencyApi {
 
     let value: number;
 
-    if (from === 'EUR') {
+    if (from === "EUR") {
       value = qty * rates[to];
-    } else if (to === 'EUR') {
+    } else if (to === "EUR") {
       value = (1 / rates[from]) * qty;
     } else {
       value = (rates[to] / rates[from]) * qty;
@@ -42,7 +42,6 @@ class CurrencyApi {
     // Round the value
     return Number(value.toFixed(8));
   }
-
 }
 
 export default CurrencyApi;
